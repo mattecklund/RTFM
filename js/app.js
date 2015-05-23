@@ -15,17 +15,20 @@ app.config(function($routeProvider){
 					return threadService.getThreads();
 				}
 			}
-		});
-		
+		})
+
 		.when('/threads/:threadId', {
 			templateUrl: 'templates/thread.html',
 			controller: 'threadCtrl',
 			resolve: {
 				threadRef: function(threadService, $route){
-					return threadService.getThread($route.current.params.id)
+					return threadService.getThread($route.current.params.threadId);
+				},
+				commentsRef: function(threadService, $route){
+					return threadService.getComments($route.current.params.threadId);
 				}
 			}
-		});
+		})
 
 		.otherwise({
 			redirectTo: '/threads'

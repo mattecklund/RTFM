@@ -9,7 +9,11 @@ app.service('threadService', function($http, $q, fb){
 
 	this.getThreads = function(){
 		// console.log(fb);
-		return new Firebase(fb.url);
+		return new Firebase(fb.url + '/threads/');
+	};
+
+	this.getComments = function(threadId){
+		return new Firebase(fb.url + '/threads' + threadId + '/comments');
 	}
 
 })
