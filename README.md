@@ -68,7 +68,7 @@ Because that was wordy...that method should look like this
 
 ```
 this.getThreads = function(){
-  return new Firebase(fb.url);
+  return new Firebase(fb.url + '/threads');
 }
 ```
 
@@ -212,7 +212,7 @@ This may seem like a lot of steps, but you've already gone through these steps t
 
 ```
   getComments: function (threadId) {
-    return $firebase(new Firebase(firebaseUrl + '/threads/' + threadId + '/comments'));
+    return $firebaseObject(new Firebase(firebaseUrl + '/threads/' + threadId + '/comments'));
   }
 ```
 
